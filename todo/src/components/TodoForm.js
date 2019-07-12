@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions/index';
 
 class TodoForm extends Component {
   constructor() {
@@ -21,8 +23,7 @@ class TodoForm extends Component {
     e.preventDefault();
 
     const { todo, completed } = this.state;
-    //this.props.addToItemList(todo, completed);
-    console.log('addItem', todo);
+    this.props.addToItemList(todo, completed);
     this.setState({
       todo: ''
     });

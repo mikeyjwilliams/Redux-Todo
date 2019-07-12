@@ -23,7 +23,7 @@ class TodoForm extends Component {
     e.preventDefault();
 
     const { todo, completed } = this.state;
-    this.props.addToItemList(todo, completed);
+    this.props.addTodo(todo, completed);
     this.setState({
       todo: ''
     });
@@ -46,4 +46,19 @@ class TodoForm extends Component {
     );
   }
 }
-export default TodoForm;
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todo,
+    completed: state.completed
+  };
+};
+
+const mapDispatchToProps = {
+  addTodo: addTodo
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoForm);

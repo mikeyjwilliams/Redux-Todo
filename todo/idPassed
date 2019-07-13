@@ -1,0 +1,7 @@
+//id is passed in above
+let toggledTodos = todos.map(todo => {
+	if (todo.id === id){
+		todo.complete = !todo.complete
+	}
+	return todo
+}) 

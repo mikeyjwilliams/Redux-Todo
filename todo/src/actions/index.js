@@ -6,8 +6,7 @@ export const addTodo = (todo, completed) => {
   return {
     type: ADD_TODO,
     payload: {
-      todo,
-      completed
+      todo
     }
   };
 };

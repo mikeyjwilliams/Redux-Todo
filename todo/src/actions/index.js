@@ -1,19 +1,17 @@
 export const ADD_TODO = 'ADD_TODO';
 export const GET_TODOS = 'GET_TODOS';
-export const COMPLETED_TODO = 'COMPLETED_TODO';
+export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE';
 
 export const addTodo = todo => {
+  let id = Math.random()
+    .toString(36)
+    .substring(2);
+  let obj = { todo: todo, id: id, complete: false };
+
   return {
     type: ADD_TODO,
-    payload: todo
+    payload: obj
   };
 };
 
-export const getTodos = todos => {
-  return {
-    type: GET_TODOS,
-    payload: todos
-  };
-};
-
-export const todoCompleteToggle = todo => {};
+export const toggleComplete = id => {};

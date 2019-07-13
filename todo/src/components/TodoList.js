@@ -61,7 +61,6 @@ class TodoList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('mapstatetoprops todolist', state);
   return { todos: state.todos };
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/index';
+import { addTodo, getTodos } from '../actions/index';
 
 class TodoForm extends Component {
   constructor() {
@@ -22,8 +22,8 @@ class TodoForm extends Component {
   addItem = e => {
     e.preventDefault();
 
-    const { todo, completed } = this.state;
-    this.props.addTodo(todo, completed);
+    const { todo } = this.state;
+    this.props.addTodo(todo);
     this.setState({
       todo: ''
     });
@@ -49,13 +49,14 @@ class TodoForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todo,
-    completed: state.completed
+    todo: state.todo,
+    todos: state.todos
   };
 };
 
 const mapDispatchToProps = {
-  addTodo: addTodo
+  addTodo: addTodo,
+  getTodos: getTodos
 };
 
 export default connect(

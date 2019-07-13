@@ -12,6 +12,8 @@ export default (state = initialState, action) => {
       const { todos } = state;
       const { todo } = action.payload;
       const newTodos = [...todos, todo];
+      console.log('payload', todo);
+      console.log('state', todos);
       return {
         todos: newTodos
       };

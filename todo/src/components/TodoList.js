@@ -29,23 +29,26 @@ class TodoList extends Component {
   };
 
   toggleComplete = e => {
-    console.log('id',this.props.id);
+    console.log('id', this.props.id);
     this.props.toggleComplete(this.props.id);
-  }
+  };
 
   render() {
     const { todos } = this.props;
     return (
       <div>
+        <h2>The List</h2>
         <form onSubmit={this.addItem}>
           <input
             type="text"
             value={this.state.input}
             onChange={this.changeHandler}
             name="input"
+            placeholder="add item to to do list..."
           />
           <button type="submit">add to list</button>
         </form>
+        <h3>Todo List:</h3>
         {todos.map((todo, i) => {
           return (
             <p
@@ -67,9 +70,7 @@ class TodoList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { todos: state.todos,
-           toggleComplete: state.id
-           };
+  return { todos: state.todos, toggleComplete: state.id };
 };
 
 const mapDispatchToProps = {

@@ -30,11 +30,14 @@ class TodoList extends Component {
 
   toggleComplete = e => {
     console.log('id', this.props.id);
-    this.props.toggleComplete(this.props.id);
+
+    this.props.toggleComplete(this.props.todos);
   };
 
   render() {
     const { todos } = this.props;
+    const { id } = this.props;
+    console.log('this.props render id', id);
     return (
       <div>
         <h2>The List</h2>

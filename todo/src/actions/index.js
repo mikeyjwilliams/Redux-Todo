@@ -14,10 +14,18 @@ export const addTodo = todo => {
   };
 };
 
-export const toggleComplete = (id) => {
+export const toggleComplete = todoList => {
+  // const toggle = todos.map(item => {
+  //   if (item.id === id) {
+  //     todo.complete = !todo.complete;
+  //   }
+  //   return todo;
+  // });
+
   return {
     type: TOGGLE_COMPLETE,
-    payload: id
-  }
-  
+    payload: {
+      todoList: todoList
+    }
+  };
 };

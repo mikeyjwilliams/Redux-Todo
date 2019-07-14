@@ -13,10 +13,9 @@ export default (state = initialState, action) => {
       return { todos: newTodos };
 
     case TOGGLE_COMPLETE:
-      const { todoList } = state;
-      const id = action.payload;
-      console.log('TOGGLE_COMPLETE todos', todoList);
-      console.log('action payload', id);
+      // const id = state;
+      const { todoList } = action.payload;
+      console.log(todoList);
       break;
     default:
       return state;

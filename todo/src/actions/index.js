@@ -14,4 +14,10 @@ export const addTodo = todo => {
   };
 };
 
-export const toggleComplete = id => {};
+export const toggleComplete = (id) => {
+  return {
+    type: TOGGLE_COMPLETE,
+    payload: id
+  }
+  
+};

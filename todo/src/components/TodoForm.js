@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, toggleComplete } from '../actions/index';
+import { addTodo } from '../actions/index';
 
 class TodoList extends Component {
   constructor() {
@@ -28,16 +28,7 @@ class TodoList extends Component {
     });
   };
 
-  toggleComplete = e => {
-    console.log('id', this.props.id);
-
-    this.props.toggleComplete(this.props.todos);
-  };
-
   render() {
-    const { todos } = this.props;
-    const { id } = this.props;
-    console.log('this.props render id', id);
     return (
       <div>
         <form onSubmit={this.addItem}>
@@ -57,14 +48,12 @@ class TodoList extends Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
-    toggleComplete: (state.id, state.todo, state.complete)
+    todos: state.todos
   };
 };
 
 const mapDispatchToProps = {
-  addTodo: addTodo,
-  toggleComplete: toggleComplete
+  addTodo: addTodo
 };
 
 export default connect(

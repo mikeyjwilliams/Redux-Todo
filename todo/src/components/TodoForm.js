@@ -40,7 +40,6 @@ class TodoList extends Component {
     console.log('this.props render id', id);
     return (
       <div>
-        <h2>The List</h2>
         <form onSubmit={this.addItem}>
           <input
             type="text"
@@ -51,29 +50,16 @@ class TodoList extends Component {
           />
           <button type="submit">add to list</button>
         </form>
-        <h3>Todo List:</h3>
-        {todos.map((todo, i) => {
-          return (
-            <p
-              onClick={this.toggleComplete}
-              key={i}
-              style={
-                todo.complete
-                  ? { textDecoration: 'line-through', color: 'red' }
-                  : null
-              }
-            >
-              {todo.todo}
-            </p>
-          );
-        })}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { todos: state.todos, toggleComplete: state.id };
+  return {
+    todos: state.todos,
+    toggleComplete: (state.id, state.todo, state.complete)
+  };
 };
 
 const mapDispatchToProps = {

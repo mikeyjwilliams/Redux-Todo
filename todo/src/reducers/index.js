@@ -20,9 +20,9 @@ export default (state = initialState, action) => {
       return { todos: newTodos };
 
     case TOGGLE_COMPLETE:
-      const [payload, ...stuff] = action.payload;
-      console.log('line 24', payload);
-      console.log('line 25', stuff);
+      const togglePayload = action.payload;
+      console.log('togglePayload', togglePayload);
+
       // const toggle = todoItemList.find(item => {
       //   if (item.id === id) {
       //     item.complete = !item.complete;

@@ -20,18 +20,17 @@ export default (state = initialState, action) => {
       return { todos: newTodos };
 
     case TOGGLE_COMPLETE:
-      const togglePayload = action.payload;
-      console.log('togglePayload', togglePayload);
+      const todoItemList = action.payload;
+      console.log('togglePayload', todoItemList);
 
-      // const toggle = todoItemList.find(item => {
-      //   if (item.id === id) {
-      //     item.complete = !item.complete;
-      //     return item.complete;
-      //   }
-      //   return item.todo;
-      // });
-
-      // const toggleTodos = [...newState, toggle];
+      const toggle = todoItemList.find(item => {
+        if (item.id === id) {
+          item.complete = !item.complete;
+        }
+        return item.todo;
+      });
+      console.log(toggle);
+      // const toggleTodos = [...newTodos, toggle];
       // return { todos: toggleTodos };
       break;
     default:

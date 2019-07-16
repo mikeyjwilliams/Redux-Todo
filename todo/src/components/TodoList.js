@@ -1,27 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-function TodoList(props) {
-  const { todos } = props;
-  return (
-    <div>
-      {todos.map((todo, i) => {
-        return (
-          <p
-            // onClick={this.toggleComplete}
-            key={i}
-            style={
-              todo.complete
-                ? { textDecoration: 'line-through', color: 'red' }
-                : null
-            }
-          >
-            {todo.todo}
-          </p>
-        );
-      })}
-    </div>
-  );
+class TodoList extends Component {
+  render() {
+    const todoItems = this.props.todos.map((todo, i) => {
+      return <p key={i}> {todo.todo} </p>;
+    });
+    return <div>{todoItems}</div>;
+  }
 }
 const mapStateToProps = state => {
   return {

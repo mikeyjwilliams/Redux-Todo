@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { toggleComplete } from '../actions';
 
 class TodoList extends Component {
   // toggleComplete = e => {
-
+  // //  this.props.toggleComplete()
   // };
 
   render() {
-    const todoItems = this.props.todos.map((todo, id) => {
-      return <p key={id}> {todo.todo}</p>;
+    const todoItems = this.props.todos.map(todo => {
+      return (
+        <p key={todo.id} onClick={() => this.props.toggleComplete(todo.id)}>
+          {' '}
+          {todo.todo}
+        </p>
+      );
     });
-    return <div>{todoItems}</div>;
+    return (
+      <div style={toggleComplete ? { textDecoration: 'line-through' } : null}>
+        {todoItems}
+      </div>
+    );
   }
 }
 const mapStateToProps = state => {
@@ -18,11 +28,12 @@ const mapStateToProps = state => {
     todos: state.todos
   };
 };
-// const mapDispatchToProps = {
-//   toggleComplete: toggleComplete
-// };
+
+const mapDispatchToProps = {
+  toggleComplete: toggleComplete
+};
 
 export default connect(
-  mapStateToProps
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(TodoList);

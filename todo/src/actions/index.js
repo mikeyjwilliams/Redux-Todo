@@ -8,11 +8,9 @@ export const addTodo = todo => {
   };
 };
 
-export const toggleComplete = (id, todo, complete) => {
+export const toggleComplete = id => {
   return {
     type: TOGGLE_COMPLETE,
-    payload: id,
-    todo,
-    complete
+    payload: id
   };
 };

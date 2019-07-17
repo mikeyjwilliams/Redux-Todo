@@ -5,14 +5,15 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  let { todos } = state; // grab todos in in all cases now.
+  let id = Math.random()
+    .toString(36)
+    .substring(2);
+  // able to grab id in all cases now.
   switch (action.type) {
     case ADD_TODO:
-      let { todos } = state;
       const todo = action.payload;
 
-      let id = Math.random()
-        .toString(36)
-        .substring(2);
       let theTodo = { todo: todo, id: id, complete: false };
 
       const newTodos = todos.concat([theTodo]);
@@ -20,19 +21,15 @@ export default (state = initialState, action) => {
       return { todos: newTodos };
 
     case TOGGLE_COMPLETE:
-      const todoItemList = action.payload;
-      console.log('togglePayload', todoItemList);
-
-      const toggle = todoItemList.find(item => {
-        if (item.id === id) {
-          item.complete = !item.complete;
+      const toggleId = action.payload;
+      const toggle = todos.map(todo => {
+        if (todo.id === toggleId) {
+          todo.complete = !todo.complete;
         }
-        return item.todo;
+        return todo;
       });
-      console.log(toggle);
-      // const toggleTodos = [...newTodos, toggle];
-      // return { todos: toggleTodos };
-      break;
+      const toggledTodos = [...todos, toggle];
+      return { todos: toggledTodos };
     default:
       return state;
   }

@@ -16,11 +16,7 @@ class TodoList extends Component {
         </p>
       );
     });
-    return (
-      <div style={toggleComplete ? { textDecoration: 'line-through' } : null}>
-        {todoItems}
-      </div>
-    );
+    return <div>{todoItems}</div>;
   }
 }
 const mapStateToProps = state => {
